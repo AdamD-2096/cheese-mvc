@@ -11,7 +11,16 @@
     <h1 th:text="${title}"></h1>
 
     <form method="post">
-        <input type="text" name="cheese" />
+        <label>
+            Cheese Name:
+            <input type="text" name="cheese" />
+        </label>
+
+        <label>
+            Description:
+            <input id="box" type="text" name="info"/>
+        </label>
+
         <input type="submit" value="Add Cheese :)" />
     </form>
 
