@@ -6,12 +6,14 @@
 
 <body>
 
-<h1 th:text="${title}"></h1>
+    <nav th:replace="fragments :: nav"></nav>
 
-<form method="post">
-    <input type="text" name="cheese" />
-    <input type="submit" value="Add Cheese :)" />
-</form>
+    <h1 th:text="${title}"></h1>
+
+    <form method="post">
+        <input type="text" name="cheese" />
+        <input type="submit" value="Add Cheese :)" />
+    </form>
 
 </body>
 </html>
