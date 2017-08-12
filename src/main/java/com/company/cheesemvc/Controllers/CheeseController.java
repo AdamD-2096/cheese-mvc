@@ -28,7 +28,16 @@ public class CheeseController {
     }
 
     @RequestMapping(value="add", method = RequestMethod.GET)
-    public String addCheese(Model model){
+    public String addCheese(Model model, HttpServletRequest request){
+        String oops = request.getParameter("oops");
+        if (oops == null){
+        }
+        else if (oops.equals("12")){
+            oops = "you must have content in cheese";
+            String oops2 = "you can only you alphabetical characters, spaces, and these symbols . , ! ";
+            model.addAttribute("oops",oops);
+            model.addAttribute("oops2",oops2);
+        }
         model.addAttribute("title","Add Cheese");
         return "cheese/add";
     }

@@ -2,6 +2,9 @@ body{
     font-family: sans-serif;
     color: #00A;
 }
+h3{
+    color: #a00
+}
 input[type=text], select {
     width: 100%;
     padding: 12px 20px;

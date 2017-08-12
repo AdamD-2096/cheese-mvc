@@ -10,6 +10,9 @@
 
     <h1 th:text="${title}"></h1>
 
+    <h3 th:if="${oops}" th:text="${oops}"></h3>
+    <h3 th:if="${oops2}" th:text="${oops2}"></h3>
+
     <form method="post">
         <label>
             Cheese Name:
