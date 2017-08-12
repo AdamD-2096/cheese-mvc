@@ -9,14 +9,17 @@
     <nav th:replace="fragments :: nav"></nav>
 
     <h1 th:text="${title}"></h1>
-    <a href=""></a>
+
     <p th:unless="${cheeses} and ${cheeses.size()}">no cheese :{</p>
+
+
     <form th:if="${cheeses} and ${cheeses.size()}" method="post">
         <select name="cheesez">
             <option th:each="cheese : ${cheeses}" th:text="${cheese.key}" th:value="${cheese.key}"></option>
         </select>
         <input type="submit" value="remove selected" />
     </form>
+
 
     <form method="post" th:if="${cheeses} and ${cheeses.size()}">
         <ol>

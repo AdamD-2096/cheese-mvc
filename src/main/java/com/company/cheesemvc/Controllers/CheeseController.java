@@ -1,5 +1,6 @@
 package com.company.cheesemvc.Controllers;
 
+import com.company.cheesemvc.Helpers.Valid;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,7 +36,12 @@ public class CheeseController {
     @RequestMapping(value="add", method = RequestMethod.POST)
     public String processCheese(@RequestParam String cheese,
                                 @RequestParam String info){
-        cheeses.put(cheese, info);
+        if (Valid.validCheese(cheese) && Valid.validDescription(info)){
+            cheeses.put(cheese, info);
+        }else{
+            return "redirect:/cheese/add?oops=12";
+        }
+
         return "redirect:";
     }
 
