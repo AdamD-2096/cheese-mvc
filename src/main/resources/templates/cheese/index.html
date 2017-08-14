@@ -18,8 +18,8 @@
         <li th:each="cheese : ${cheeses}">
             <hr/>
             <ul>
-                <li th:text="${cheese.key + '!'}"></li>
-                <li th:text="${cheese.value}"></li>
+                <li th:text="${cheese.getValue().getName() + '!'}"></li>
+                <li th:text="${cheese.getValue().getInfo()}"></li>
             </ul>
             <hr/>
         </li>

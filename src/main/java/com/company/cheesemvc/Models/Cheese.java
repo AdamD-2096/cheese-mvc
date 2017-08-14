@@ -24,6 +24,6 @@ public class Cheese {
     }
 
     protected void setInfo(String aInfo) {
-        this.name = aInfo;
+        this.info = aInfo;
     }
 }

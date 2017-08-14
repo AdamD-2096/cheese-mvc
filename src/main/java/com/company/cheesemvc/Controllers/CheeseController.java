@@ -1,6 +1,7 @@
 package com.company.cheesemvc.Controllers;
 
 import com.company.cheesemvc.Helpers.Valid;
+import com.company.cheesemvc.Models.Cheese;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,13 +11,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 
 @Controller
 @RequestMapping("cheese")
 public class CheeseController {
 
-    static HashMap<String, String> cheeses = new HashMap<>();
+    static HashMap<String, Cheese> cheeses = new HashMap<>();
 
     @RequestMapping(value = "")
     public String index(Model model){
@@ -46,7 +48,8 @@ public class CheeseController {
     public String processCheese(@RequestParam String cheese,
                                 @RequestParam String info){
         if (Valid.validCheese(cheese) && Valid.validDescription(info)){
-            cheeses.put(cheese, info);
+            Cheese cheeze = new Cheese(cheese, info);
+            cheeses.put(cheese, cheeze);
         }else{
             return "redirect:/cheese/add?oops=12";
         }
