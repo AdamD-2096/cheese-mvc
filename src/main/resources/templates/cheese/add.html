@@ -4,7 +4,7 @@
 
 <head th:replace="fragments :: head"></head>
 
-<body>
+<body class="container body-content">
 
     <nav th:replace="fragments :: nav"></nav>
 
@@ -13,16 +13,20 @@
     <h3 th:if="${oops}" th:text="${oops}"></h3>
     <h3 th:if="${oops2}" th:text="${oops2}"></h3>
 
-    <form method="post">
-        <label>
-            Cheese Name:
-            <input type="text" name="cheese" />
-        </label>
+    <form method="post" style="max-width:600px;">
+        <div class="form-group">
+            <label>
+                Cheese Name:
+                <input class="form-control" type="text" name="cheese" />
+            </label>
+        </div>
 
-        <label>
-            Description:
-            <input id="box" type="text" name="info"/>
-        </label>
+        <div class="form-group">
+            <label>
+                Description:
+                <input class="form-control" id="box" type="text" name="info"/>
+            </label>
+        </div>
 
         <input type="submit" value="Add Cheese :)" />
     </form>
