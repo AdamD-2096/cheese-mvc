@@ -2,6 +2,7 @@ package com.company.cheesemvc.Controllers;
 
 import com.company.cheesemvc.Helpers.Valid;
 import com.company.cheesemvc.Models.Cheese;
+import com.company.cheesemvc.Models.CheeseData;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,18 +12,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
+
 
 
 @Controller
 @RequestMapping("cheese")
 public class CheeseController {
 
-    static HashMap<String, Cheese> cheeses = new HashMap<>();
-
     @RequestMapping(value = "")
     public String index(Model model){
-
+        HashMap<String, Cheese> cheeses = CheeseData.getAll();
         model.addAttribute("cheeses", cheeses);
         model.addAttribute("title", "My Cheese");
 
@@ -49,26 +48,25 @@ public class CheeseController {
                                 @RequestParam String info){
         if (Valid.validCheese(cheese) && Valid.validDescription(info)){
             Cheese cheeze = new Cheese(cheese, info);
-            String key = cheeze.getName() + cheeze.getId();
-            cheeses.put(key, cheeze);
+            CheeseData.add(cheeze);
         }else{
             return "redirect:/cheese/add?oops=12";
         }
-
         return "redirect:";
     }
 
     @RequestMapping(value="remove", method = RequestMethod.GET)
     public String removeCheese(Model model){
+        HashMap<String, Cheese> cheeses = CheeseData.getAll();
         model.addAttribute("title","Remove Cheese");
         model.addAttribute("cheeses", cheeses);
         return "cheese/remove";
     }
 
     @RequestMapping(value="remove", method = RequestMethod.POST)
-    public String processRemove(@RequestParam ArrayList<String> cheesez){
-        for (String cheese : cheesez) {
-            cheeses.remove(cheese);
+    public String processRemove(@RequestParam ArrayList<Integer> cheeseIds){
+        for (Integer cheeseId : cheeseIds) {
+            CheeseData.remove(cheeseId);
         }
         return "redirect:";
     }
