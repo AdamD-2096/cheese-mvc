@@ -49,7 +49,8 @@ public class CheeseController {
                                 @RequestParam String info){
         if (Valid.validCheese(cheese) && Valid.validDescription(info)){
             Cheese cheeze = new Cheese(cheese, info);
-            cheeses.put(cheese, cheeze);
+            String key = cheeze.getName() + cheeze.getId();
+            cheeses.put(key, cheeze);
         }else{
             return "redirect:/cheese/add?oops=12";
         }

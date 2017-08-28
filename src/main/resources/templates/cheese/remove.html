@@ -15,7 +15,7 @@
 
     <form th:if="${cheeses} and ${cheeses.size()}" method="post">
         <select name="cheesez">
-            <option th:each="cheese : ${cheeses}" th:text="${cheese.getValue().getName()}" th:value="${cheese.getValue().getName()}"></option>
+            <option th:each="cheese : ${cheeses}" th:text="${cheese.getValue().getName()} + '! ' + ${cheese.getValue().getInfo()}" th:value="${cheese.getValue().getName()} + ${cheese.getValue().getId()}"></option>
         </select>
         <input type="submit" value="remove selected" />
     </form>
@@ -26,8 +26,8 @@
             <li th:each="cheese : ${cheeses}">
                 <hr/>
                 <ul>
-                    <li th:text="${cheese.getValue().getName() + '!'}"></li>
-                    <input type="checkbox" name="cheesez" th:value="${cheese.getValue().getName()}"/>
+                    <li th:text="${cheese.getValue().getName()} + '! ' + ${cheese.getValue().getInfo()}"></li>
+                    <input type="checkbox" name="cheesez" th:value="${cheese.getValue().getName()} + ${cheese.getValue().getId()}"/>
                 </ul>
                 <hr/>
             </li>
