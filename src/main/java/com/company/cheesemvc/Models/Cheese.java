@@ -15,18 +15,19 @@ public class Cheese {
     public Cheese(String aName) {
         this(aName, "");
     }
+    public Cheese(){this("");}
 
     public String getName() {
         return this.name;
     }
-    protected void setName(String aName) {
+    public void setName(String aName) {
         this.name = aName;
     }
 
     public String getInfo() {
         return this.info;
     }
-    protected void setInfo(String aInfo) {
+    public void setInfo(String aInfo) {
         this.info = aInfo;
     }
 
